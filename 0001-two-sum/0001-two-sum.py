@@ -1,6 +1,8 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        for i in range(0,len(nums)):   #This loop traverses each element from left to right
-            for j in range(i+1,len(nums)):  # Inner loop to compare each number with outer
-                if nums[i] + nums[j] == target:
-                    return([i,j])
+        d = {} #Dictionary to store key value pairs 
+        for i in range(len(nums)):  #Using single loop to find the complement and insert element to reduce complexity. 
+            o = target - nums[i]
+            if o in d:
+                return([i,d[o]])  #if element's complement exists return the index
+            d[nums[i]] = i
